@@ -27,7 +27,7 @@ RUN conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pk
     conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda/ && \
     conda config --set show_channel_urls yes
 
-CP enviroments.yml ./enviroments.yml
+COPY enviroments.yml ./enviroments.yml
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 RUN conda env create -f enviroments.yml
 RUN rm ./Miniconda3-latest-Linux-x86_64.sh && ln -s /opt/miniconda3/etc/profile.d/conda.sh /etc/profile.d/conda.sh  && echo ". /opt/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc && echo "conda activate enzyme_python" >> ~/.bashrc && find /opt/miniconda3/ -follow -type f -name '*.a' -delete && find /opt/miniconda3/ -follow -type f -name '*.js.map' -delete &&  /opt/conda/bin/conda clean -afy
