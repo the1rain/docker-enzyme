@@ -11,12 +11,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       openmpi-bin \
       wget && \
     rm -rf /tmp/*
-    
+
 RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN apt-get update
 
 WORKDIR /tmp
-RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+RUN wget --no-check-certificate https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 RUN bash ./Miniconda3-4.5.4-Linux-x86_64.sh -b -p /opt/miniconda3
 ENV PATH=/opt/miniconda3/bin:$PATH
 RUN conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ && \
