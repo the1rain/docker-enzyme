@@ -1,5 +1,5 @@
 # enzyme_python jupyter enviroments
-FROM centos:centos7
+FROM centos
 MAINTAINER  wangry@tib.cas.cn
 RUN yum update && yum upgrade -y && yum install -y --no-install-recommends \
       bzip2 \
