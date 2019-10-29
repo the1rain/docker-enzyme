@@ -1,7 +1,7 @@
 # enzyme_python jupyter enviroments
-FROM centos
+FROM ubuntu:16.04
 MAINTAINER  wangry@tib.cas.cn
-RUN yum update && yum upgrade -y && yum install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y --no-install-recommends \
       bzip2 \
       g++ \
       git \
@@ -11,6 +11,9 @@ RUN yum update && yum upgrade -y && yum install -y --no-install-recommends \
       openmpi-bin \
       wget && \
     rm -rf /tmp/*
+    
+RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+RUN apt-get update
 
 WORKDIR /tmp
 RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
